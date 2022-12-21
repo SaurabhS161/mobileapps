@@ -41,4 +41,17 @@ class Utility {
         }
         return petList
     }
+
+    fun parseConfigJsonData(json :String) : String {
+        var allowedTime : String = ""
+        try {
+            val obj = JSONObject(json)
+            val settingsObj = obj.getJSONObject("settings")
+            allowedTime = settingsObj.getString("workHours")
+
+        } catch (e: JSONException) {
+            e.printStackTrace()
+        }
+        return allowedTime
+    }
 }
